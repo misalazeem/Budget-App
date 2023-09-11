@@ -1,0 +1,19 @@
+<h1>Purchase Details</h1>
+
+<p><strong>Name:</strong> <%= @purchase.name %></p>
+<p><strong>Amount:</strong> <%= @purchase.amount %></p>
+
+<h2>Categories:</h2>
+<ul>
+  <% @purchase.categories.each do |category| %>
+    <li><%= category.name %></li>
+  <% end %>
+</ul>
+
+<p><strong>Created At:</strong> <%= @purchase.created_at.strftime('%B %d, %Y %I:%M %p') %></p>
+
+<% if params[:category_id] %>
+  <%= link_to 'Back to Categories', category_path(params[:category_id]) %>
+<% else %>
+  <p>No associated category found.</p>
+<% end %>

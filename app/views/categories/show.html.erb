@@ -1,0 +1,16 @@
+<h1><%= @category.name %></h1>
+<p><%= @category.icon %></p>
+<p>Total Amount: <%= @category.purchases.sum(:amount) %></p>
+
+<h2>Transactions in this Category</h2>
+<ul>
+<% @category.purchases.each do |purchase| %>
+  <li>
+    <%= link_to purchase.name, category_purchase_path(@category, purchase) %>
+    - Amount: <%= purchase.amount %>
+  </li>
+<% end %>
+</ul>
+
+<%= link_to "Add a New Purchase", new_category_purchase_path(@category) %>
+

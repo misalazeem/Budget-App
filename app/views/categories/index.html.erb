@@ -1,0 +1,16 @@
+<h1>Categories</h1>
+
+<div class="categories-list">
+  <% @categories.each do |category| %>
+    <div class="category-item">
+      <%= link_to category do %>
+        <h2><%= category.name %></h2>
+        <p><%= category.icon %></p>
+        <p>Total Amount: <%= category.purchases.sum(:amount) %></p>
+      <% end %>
+      <%= link_to "View Purchases", category_purchases_path(category) %>
+    </div>
+  <% end %>
+</div>
+
+<%= link_to "Add a New Category", new_category_path, class: "new-category-button" %>
