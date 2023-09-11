@@ -1,35 +1,22 @@
-<h1>Add a New Purchase</h1>
-
+<div class="navigation">
+  <ul>
+    <li><%= link_to image_tag('backarrow.png', alt: 'Back'), category_path(params[:category_id]), class: 'nav-link' %></li>
+    <h2>Add a new Purchase</h2>
+    <li><%= link_to 'Sign Out', destroy_user_session_path, data: { turbo_method: :delete }, class: "nav-link" %></li>
+  </ul>
+</div>
+<div class="form-class">
 <%= form_with(model: [@category, @purchase], url: category_purchases_path(@category), method: :post, id: "purchase-form") do |form| %>
-  <div class="field">
-    <%= form.label :name %>
     <%= form.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :amount %>
     <%= form.text_field :amount %>
-  </div>
-
-  <div class="field">
-    <%= form.label :category_ids, "Mandatory Category" %>
     <%= form.select(:category_ids, [[@category.name, @category.id]], {}, { multiple: false }) %>
-  </div>
-
-  <div class="field">
-    <%= form.label :category_ids, "Optional Categories" %>
     <% @categories.each do |category| %>
       <% next if category == @category %>
-      <div>
         <%= form.check_box :category_ids, { multiple: true }, category.id, nil %>
         <%= form.label "purchase_category_ids_#{category.id}", category.name %>
-      </div>
     <% end %>
-  </div>
 
-  <div class="actions">
     <%= form.submit "Create Purchase" %>
   </div>
 <% end %>
-
-<%= link_to "Back to Categories", category_path(@category) %>
+</div>

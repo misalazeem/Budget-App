@@ -1,3 +1,10 @@
+<div class="navigation">
+  <ul>
+    <li><%= link_to image_tag('backarrow.png', alt: 'Back'), categories_path, class: 'nav-link' %></li>
+    <h2>Create A Category</h2>
+    <li><%= link_to 'Sign Out', destroy_user_session_path, data: { turbo_method: :delete }, class: "nav-link" %></li>
+  </ul>
+</div>
 <% if @category.errors.any? %>
   <div id="error_explanation">
     <h2><%= pluralize(@category.errors.count, "error") %> prohibited this category from being saved:</h2>
@@ -8,22 +15,10 @@
     </ul>
   </div>
 <% end %>
-<h1>Add a New Category</h1>
-
-<%= form_with(model: @category, url: categories_path, method: :post) do |form| %>
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :icon %>
-    <%= form.text_field :icon %>
-  </div>
-
-  <div class="actions">
+<div class="form-class">
+<%= form_with(model: @category, url: categories_path, method: :post, multipart: true) do |form| %>
+    <%= form.text_field :name, placeholder: "Enter your name" %>
+    <%= form.file_field :icon, id: 'icon_upload' %>
     <%= form.submit "Create Category" %>
-  </div>
 <% end %>
-
-<%= link_to "Back to Categories", categories_path %>
+</div>
