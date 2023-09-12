@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.feature 'Category Show Page', type: :feature do
@@ -5,11 +7,11 @@ RSpec.feature 'Category Show Page', type: :feature do
 
   before do
     login_as(user, scope: :user)
-    groceries_category = Category.create(name: 'Groceries', icon: '/uploads/icon.png', user: user)
-    purchase1 = Purchase.create(name: 'Milk', amount: 2.99, user: user)
-    purchase2 = Purchase.create(name: 'Bread', amount: 1.99, user: user)
-    pc1 = PurchaseCategory.create(purchase: purchase1, category: groceries_category)
-    pc2 = PurchaseCategory.create(purchase: purchase2, category: groceries_category)
+    groceries_category = Category.create(name: 'Groceries', icon: '/uploads/icon.png', user:)
+    purchase1 = Purchase.create(name: 'Milk', amount: 2.99, user:)
+    purchase2 = Purchase.create(name: 'Bread', amount: 1.99, user:)
+    PurchaseCategory.create(purchase: purchase1, category: groceries_category)
+    PurchaseCategory.create(purchase: purchase2, category: groceries_category)
     visit category_path(groceries_category)
   end
 

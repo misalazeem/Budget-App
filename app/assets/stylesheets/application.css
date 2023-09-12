@@ -53,11 +53,6 @@ body {
   height: 40px;
 }
 
-.navigation ul li a {
-  text-decoration: none;
-  color: #fff;
-}
-
 .categories-list {
   display: flex;
   flex-direction: column;
@@ -143,14 +138,10 @@ body {
   color: #000;
 }
 
-.purchase-item a:hover {
-  text-decoration: underline;
-}
-
 .transaction-container {
   display: flex;
   flex-direction: column;
-  margin: 10px 0px;
+  margin: 10px 0;
 }
 
 .transaction-heading {
@@ -253,4 +244,13 @@ body {
   padding: 10px;
   background-color: #5fb523;
   outline: 1px solid #d3d3d3;
+}
+
+.navigation ul li a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.purchase-item a:hover {
+  text-decoration: underline;
 }

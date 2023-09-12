@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class PurchasesController < ApplicationController
-  before_action :set_purchase, only: [:show, :edit, :update, :destroy]
+  before_action :set_purchase, only: %i[show edit update destroy]
 
   def index
     @purchases = Purchase.all
@@ -20,16 +22,17 @@ class PurchasesController < ApplicationController
     name = params[:purchase][:name]
     amount = params[:purchase][:amount]
     current_category = Category.find(params[:category_id])
-  
-    @purchase = Purchase.new(name: name, amount: amount, user: current_user)
-  
+
+    @purchase = Purchase.new(name:, amount:, user: current_user)
+
     if @purchase.save
       PurchaseCategory.create(purchase_id: @purchase.id, category_id: current_category.id)
-  
+
       category_ids.each do |category_id|
         next if category_id.blank?
+
         begin
-          PurchaseCategory.create(purchase_id: @purchase.id, category_id: category_id)
+          PurchaseCategory.create(purchase_id: @purchase.id, category_id:)
         rescue ActiveRecord::RecordNotFound
         end
       end
@@ -39,9 +42,8 @@ class PurchasesController < ApplicationController
       render :new
     end
   end
-  
-  def edit
-  end
+
+  def edit; end
 
   def update
     if @purchase.update(purchase_params)

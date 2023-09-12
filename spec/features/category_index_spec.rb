@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.feature 'Category Index Page', type: :feature do
   let!(:user) { User.create(name: 'user', email: 'user@example.com', password: 'password') }
-  let!(:groceries_category) { Category.create(name: 'Groceries', icon: '/uploads/icon.png', user: user) }
-  let!(:electronics_category) { Category.create(name: 'Electronics', icon: '/uploads/icon.png', user: user) }
+  let!(:groceries_category) { Category.create(name: 'Groceries', icon: '/uploads/icon.png', user:) }
+  let!(:electronics_category) { Category.create(name: 'Electronics', icon: '/uploads/icon.png', user:) }
 
   before do
     login_as(user, scope: :user)

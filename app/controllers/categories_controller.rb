@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class CategoriesController < ApplicationController
-  before_action :set_category, only: [:show, :destroy]
+  before_action :set_category, only: %i[show destroy]
 
   def new
     @category = current_user.categories.build
@@ -8,9 +10,7 @@ class CategoriesController < ApplicationController
   def create
     @category = current_user.categories.build(category_params)
     if @category.save
-      if category_params[:icon].present?
-        handle_uploaded_icon_file
-      end
+      handle_uploaded_icon_file if category_params[:icon].present?
       redirect_to categories_path, notice: 'Category was successfully created.'
     else
       render :new
@@ -44,11 +44,11 @@ class CategoriesController < ApplicationController
   def handle_uploaded_icon_file
     uploaded_file = category_params[:icon]
     file_path = Rails.root.join('public', 'uploads', uploaded_file.original_filename)
-  
+
     File.open(file_path, 'wb') do |file|
       file.write(uploaded_file.read)
     end
-  
+
     @category.update(icon: File.join('/uploads', uploaded_file.original_filename))
   end
 end
