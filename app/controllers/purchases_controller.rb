@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class PurchasesController < ApplicationController
   before_action :set_purchase, only: %i[show edit update destroy]
 
