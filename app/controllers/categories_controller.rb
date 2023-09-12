@@ -42,9 +42,9 @@ class CategoriesController < ApplicationController
   def handle_uploaded_icon_file
     uploaded_file = category_params[:icon]
     file_path = Rails.root.join('public', 'uploads', uploaded_file.original_filename)
-  
+
     File.binwrite(file_path, uploaded_file.read)
-  
+
     @category.update(icon: File.join('/uploads', uploaded_file.original_filename))
   end
 end
