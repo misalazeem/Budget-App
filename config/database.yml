@@ -82,4 +82,6 @@ test:
 # for a full overview on how database connection configuration can be specified.
 #
 production:
+  <<: *default
+  database: Budget_App_production
   url: <%= ENV["DATABASE_URL"] %>
