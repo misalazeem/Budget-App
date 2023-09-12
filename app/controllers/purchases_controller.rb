@@ -4,7 +4,7 @@ class PurchasesController < ApplicationController
   before_action :set_purchase, only: %i[show edit update destroy]
 
   def index
-    @purchases = Purchase.all
+    @purchases = current_user.purchases
   end
 
   def show
@@ -15,20 +15,22 @@ class PurchasesController < ApplicationController
     @category = Category.find(params[:category_id])
     @categories = current_user.categories
     @purchase = Purchase.new
+    @selected_category_ids = []
   end
 
   def create
-    category_ids = Array(purchase_params.delete(:category_ids))
+    primary_category_id = params[:purchase][:primary_category_id]
+    additional_category_ids = params[:additional_category_ids] || []
+
     name = params[:purchase][:name]
     amount = params[:purchase][:amount]
-    current_category = Category.find(params[:category_id])
 
     @purchase = Purchase.new(name:, amount:, user: current_user)
 
     if @purchase.save
-      PurchaseCategory.create(purchase_id: @purchase.id, category_id: current_category.id)
+      PurchaseCategory.create(purchase_id: @purchase.id, category_id: primary_category_id)
 
-      category_ids.each do |category_id|
+      additional_category_ids.each do |category_id|
         next if category_id.blank?
 
         begin
@@ -36,7 +38,8 @@ class PurchasesController < ApplicationController
         rescue ActiveRecord::RecordNotFound
         end
       end
-      redirect_to category_path(current_category), notice: 'Purchase was successfully created.'
+
+      redirect_to category_path(primary_category_id), notice: 'Purchase was successfully created.'
     else
       @categories = current_user.categories
       render :new
