@@ -19,24 +19,21 @@ class PurchasesController < ApplicationController
   def create
     primary_category_id = params[:purchase][:primary_category_id]
     additional_category_ids = params[:additional_category_ids] || []
-
+  
     name = params[:purchase][:name]
     amount = params[:purchase][:amount]
-
+  
     @purchase = Purchase.new(name:, amount:, user: current_user)
-
+  
     if @purchase.save
       PurchaseCategory.create(purchase_id: @purchase.id, category_id: primary_category_id)
-
+  
       additional_category_ids.each do |category_id|
         next if category_id.blank?
-
-        begin
-          PurchaseCategory.create(purchase_id: @purchase.id, category_id:)
-        rescue ActiveRecord::RecordNotFound
-        end
+  
+        PurchaseCategory.create(purchase_id: @purchase.id, category_id:)
       end
-
+  
       redirect_to category_path(primary_category_id), notice: 'Purchase was successfully created.'
     else
       @categories = current_user.categories
