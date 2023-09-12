@@ -45,7 +45,6 @@ class PurchasesController < ApplicationController
 
   def update
     if @purchase.update(purchase_params)
-      # Update the associated categories
       @purchase.category_ids = params[:purchase][:category_ids]
       redirect_to @purchase, notice: 'Purchase was successfully updated.'
     else
