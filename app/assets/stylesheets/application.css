@@ -1,0 +1,384 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('/assets/Proxima Nova Font.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  margin: 0%;
+  font-family: 'Proxima Nova', sans-serif;
+  background-color: #f3f3f3;
+}
+
+.full-page {
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+}
+
+.navigation {
+  display: flex;
+  background-color: #3778c2;
+  padding: 30px 30px;
+  font-size: 20px;
+  color: #fff;
+}
+
+.navigation ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  list-style-type: none;
+}
+
+.navigation ul li {
+  margin-right: 20px;
+}
+
+.navigation ul li img {
+  width: 40px;
+  height: 40px;
+}
+
+.categories-list {
+  display: flex;
+  flex-direction: column;
+  background-color: #f3f3f3;
+  padding: 10px 10px;
+  overflow-y: scroll;
+}
+
+.category-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  border: 1px solid #f3f3f3;
+  margin-bottom: 10px;
+  padding: 15px;
+}
+
+.category-left {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.category-icon {
+  width: 100px;
+}
+
+.new-category {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: flex-end;
+  background-color: #5fb523;
+  padding: 20px;
+}
+
+.new-category-inner {
+  border: 2px solid #fff;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 20px;
+}
+
+.new-category-inner a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 22px;
+}
+
+.category-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  font-size: 26px;
+  background-color: #fff;
+  border: 1px solid #f3f3f3;
+  margin-bottom: 30px;
+}
+
+.purchases-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  overflow-y: scroll;
+}
+
+.purchase-item {
+  display: flex;
+  flex-direction: row;
+  background-color: #fff;
+  border: 2px solid #f3f3f3;
+  justify-content: space-between;
+  padding: 20px;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.purchase-item a {
+  text-decoration: none;
+  color: #000;
+}
+
+.transaction-container {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
+}
+
+.transaction-heading {
+  display: flex;
+  flex-direction: row;
+  background-color: #fff;
+  padding: 20px;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 26px;
+}
+
+.transaction-details {
+  display: flex;
+  flex-direction: column;
+  font-size: 24px;
+  background-color: #fff;
+  padding: 20px;
+}
+
+.form-class {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px;
+  background-color: #f3f3f3;
+  margin-top: 15px;
+}
+
+.form-class input[type="text"] {
+  width: 90%;
+  padding: 10px;
+  border: none;
+  outline: 1px solid #f3f3f3;
+  margin-bottom: 5px;
+}
+
+.form-class input[type="email"] {
+  width: 90%;
+  padding: 10px;
+  border: none;
+  outline: 1px solid #f3f3f3;
+  margin-bottom: 5px;
+}
+
+.form-class input[type="password"] {
+  width: 90%;
+  padding: 10px;
+  border: none;
+  outline: 1px solid #f3f3f3;
+  margin-bottom: 5px;
+}
+
+.form-class input[type="file"] {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background-color: #fff;
+  outline: 1px solid #f3f3f3;
+  margin-bottom: 5px;
+}
+
+.form-class input[type="submit"] {
+  padding: 10px;
+  background-color: #5fb523;
+  color: #fff;
+  border: 1px solid #fff;
+  width: 95%;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+.form-class select {
+  width: 95%;
+  padding: 10px;
+  border: none;
+  background-color: #fff;
+  outline: 1px solid #f3f3f3;
+  margin-bottom: 5px;
+}
+
+.center {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding: 50px;
+  width: 40%;
+  margin: 10% auto;
+  background-color: #f3f3f3;
+  border: 2px solid #333;
+}
+
+.center a {
+  text-decoration: none;
+  color: #fff;
+  padding: 10px;
+  background-color: #5fb523;
+  outline: 1px solid #f3f3f3;
+}
+
+.navigation ul li a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.purchase-item a:hover {
+  text-decoration: underline;
+}
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.top {
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f3f3f3;
+}
+
+.bottom {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  bottom: 0;
+  width: 95%;
+  padding: 20px;
+}
+
+.nav-link-login {
+  width: 100%;
+  background-color: #3778c2;
+  text-align: center;
+  padding: 10px;
+  text-decoration: none;
+  color: #fff;
+}
+
+.nav-link-signup {
+  width: 100%;
+  background-color: #fff;
+  text-align: center;
+  padding: 10px;
+  text-decoration: none;
+  color: #000;
+}
+
+.category-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+@media screen and (max-width: 768px) {
+  .navigation {
+    font-size: 14px;
+    padding: 0;
+  }
+
+  .empty {
+    width: 20px;
+    height: 20px;
+  }
+
+  .navigation h2 {
+    padding: 0;
+    margin: 0;
+  }
+
+  .navigation ul {
+    padding: 0 5px;
+    align-items: flex-end;
+  }
+
+  .navigation ul li img {
+    width: 20px;
+    height: 20px;
+  }
+
+  .category-icon {
+    width: 70px;
+    height: 40px;
+  }
+
+  .bottom {
+    width: 85%;
+  }
+
+  .categories-list a {
+    text-decoration: none;
+    color: #000;
+  }
+
+  .category-header {
+    font-size: 16px;
+    padding: 5px 10px;
+    margin-bottom: 10px;
+  }
+
+  .new-category {
+    width: 90%;
+  }
+
+  .form-class input[type="text"] {
+    width: 96%;
+  }
+
+  .form-class input[type="email"] {
+    width: 96%;
+  }
+
+  .form-class input[type="password"] {
+    width: 96%;
+  }
+
+  .form-class input[type="submit"] {
+    width: 100%;
+  }
+
+  .form-class input[type="file"] {
+    width: 95%;
+  }
+}

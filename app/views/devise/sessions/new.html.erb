@@ -1,0 +1,16 @@
+<div class="navigation">
+  <ul>
+    <li><%= link_to image_tag('backarrow.png', alt: 'Back'), root_path, class: 'nav-link' %></li>
+    <li><h2>Login</h2></li>
+    <li><div class="empty"></div></li>
+  </ul>
+</div>
+<div class="form-class">
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Enter Email" %>
+    <%= f.password_field :password, autocomplete: "current-password", placeholder: "Enter Password" %>
+    <%= f.submit "Log in" %>
+
+<% end %>
+</div>

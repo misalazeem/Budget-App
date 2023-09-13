@@ -1,0 +1,14 @@
+
+<div class = "home-container">
+  <div class="top">
+    <h1>Spend Wise</h1>
+  </div>
+  <div class= "bottom">
+    <% if user_signed_in? %>
+      <%= link_to 'Enter App', categories_path, class: "nav-link-login" %>
+    <% else %>
+      <%= link_to 'Log In', new_user_session_path, class: "nav-link-login" %>
+      <%= link_to 'Sign Up', new_user_registration_path, class: "nav-link-signup" %>
+    <% end %>
+  </div>
+</div>

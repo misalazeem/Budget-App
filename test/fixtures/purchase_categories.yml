@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  purchase: one
+  category: one
+
+two:
+  purchase: two
+  category: two
