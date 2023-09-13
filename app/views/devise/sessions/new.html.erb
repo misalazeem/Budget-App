@@ -1,8 +1,8 @@
 <div class="navigation">
   <ul>
     <li><%= link_to image_tag('backarrow.png', alt: 'Back'), root_path, class: 'nav-link' %></li>
-    <h2>Sign in</h2>
-    <li><%= link_to 'Sign Up', new_user_registration_path, class: "nav-link" %></li>
+    <li><h2>Login</h2></li>
+    <li><div class="empty"></div></li>
   </ul>
 </div>
 <div class="form-class">
@@ -10,12 +10,6 @@
 
     <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Enter Email" %>
     <%= f.password_field :password, autocomplete: "current-password", placeholder: "Enter Password" %>
-
-
-  <% if devise_mapping.rememberable? %>
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-  <% end %>
     <%= f.submit "Log in" %>
 
 <% end %>

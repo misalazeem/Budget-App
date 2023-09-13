@@ -1,3 +1,4 @@
+<div class="full-page">
 <div class="navigation">
   <ul>
     <li><%= link_to image_tag('backarrow.png', alt: 'Back'), categories_path, class: 'nav-link' %></li>
@@ -7,14 +8,14 @@
 </div>
 <div class="category-header">
   <p><%= @category.name %></p>
-  <p>Total Amount: <%= @category.purchases.sum(:amount) %></p>
+  <p>$ <%= @category.purchases.sum(:amount) %></p>
 </div>
 <div class="purchases-container">
 
   <% @category.purchases.each do |purchase| %>
     <div class="purchase-item">
       <%= link_to purchase.name, category_purchase_path(@category, purchase) %>
-      - Amount: <%= purchase.amount %>
+      $ <%= purchase.amount %>
     </div>
   <% end %>
 </div>
@@ -22,4 +23,5 @@
   <div class="new-category-inner">
     <%= link_to "Add a New Purchase", new_category_purchase_path(@category) %>
   </div>
+</div>
 </div>

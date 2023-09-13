@@ -8,30 +8,19 @@
 
 <div class="form-class">
   <%= form_with(model: [@category, @purchase], url: category_purchases_path(@category), method: :post, id: 'purchase-form') do |form| %>
-    <div class="form-field">
-      <%= form.label :name, 'Name for Transaction', class: 'form-label' %>
-      <%= form.text_field :name, class: 'form-control', placeholder: 'Enter Name for Transaction' %>
-    </div>
-    
-    <div class="form-field">
-      <%= form.label :amount, 'Amount for Transaction', class: 'form-label' %>
-      <%= form.text_field :amount, class: 'form-control', placeholder: 'Enter Amount for Transaction' %>
-    </div>
-    
-  <!-- Hidden field for primary category -->
-  <%= form.hidden_field :primary_category_id, value: @category.id %>
 
-  <!-- Additional Categories -->
-  <div class="form-field">
-    <p>Additional Categories:</p>
+ 
+  <%= form.text_field :name, class: 'form-control', placeholder: 'Enter Name for Transaction' %>
+  <%= form.text_field :amount, class: 'form-control', placeholder: 'Enter Amount for Transaction' %>
+  <%= form.hidden_field :primary_category_id, value: @category.id %>
     <% @categories.each do |category| %>
       <% next if category == @category %>
-      <div class="checkbox-field">
+
         <%= check_box_tag 'additional_category_ids[]', category.id, false, id: "additional_category_ids_#{category.id}", class: 'form-checkbox' %>
         <%= label_tag "additional_category_ids_#{category.id}", category.name, class: 'checkbox-label' %>
-      </div>
+
     <% end %>
-  </div>
+
 
   <%= form.submit 'Create Purchase', class: 'btn btn-primary' %>
   <% end %>
