@@ -5,4 +5,6 @@ class Purchase < ApplicationRecord
 
   validates :name, presence: true
   validates :amount, presence: true
+
+  default_scope { order(created_at: :desc) }
 end

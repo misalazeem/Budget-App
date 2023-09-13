@@ -26,7 +26,7 @@ class CategoriesController < ApplicationController
 
   def show
     @category = Category.find(params[:id])
-    @transactions = @category.purchases
+    @transactions = @category.purchases.order(created_at: :desc)
   end
 
   private
